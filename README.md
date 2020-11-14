@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Awesome Login form project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project has some setup but still requires some efforts to make it awesome. Therefore, we need someone to help us to make it production ready.
 
-## Available Scripts
+Note: This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
+## Returning your solution
 
-### `yarn start`
+- Make a copy of this repository in your github/bitbucket/gitlab account.
+- Make changes, commit them, and push them into your repository.
+- Share us the url after completion.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Prerequisite
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- To help you, all the necessary packages are already specified in the package.json
+- Run app locally in development mode using `yarn && yarn start`.
+- Launch the test runner in the interactive watch mode using `yarn test`.
+- Build the app for production to the build folder using `yarn build`.
 
-### `yarn test`
+## Exercises
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Note: Only mandatory exercise is necessary to qualify for the test however, your efforts on optional exercises would be highly appreciated.
 
-### `yarn build`
+### [1] Build login form (Mandatory)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Use material design for the [ui](https://material-ui.com/).
+- Add Email and Password field in the form.
+- Add validations for the fields, for example email (must be a valid email) and, password (must be at least 8 characters long and include at least a number and an alphabet).
+- Structure the code and project folder structure in a modular and logical manner.
+- Feel free to use your own ideas for the design.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### [2] Testing (Optional)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Write unit test for the app. (tips: [testing-library](https://testing-library.com/))
 
-### `yarn eject`
+### [3] Documentation (Optional)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Remember to update the README
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### [4] Docker (Optional)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Make the app run in the docker
