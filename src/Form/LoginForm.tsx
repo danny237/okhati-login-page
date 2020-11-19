@@ -1,11 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './FormStyle.module.css';
 import logo from '../image/logo.png';
 import { FaFacebook, FaLinkedin, FaGoogle } from 'react-icons/fa';
 import TextField from '@material-ui/core/TextField';
-import { Button, IconButton } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+
+import { EMAIL_FORMAT } from '../constants/EmailFormat';
 
 export default function LoginForm() {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const [emailError, setEmailError] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
+
+    const submitHandler = (e: any) => {
+        e.preventDefault()
+
+        // email validation
+        function isValidEmail(){
+            if(email.match(EMAIL_FORMAT)){
+                return true
+            }else{
+                return false
+            }
+        }
+
+        if ((isValidEmail()) && (email !== "")){
+            setEmailError(false)
+        }else{
+            setEmailError(true)
+        }
+
+        // password validation
+        if ((password === "") || password.length < 8){
+            setPasswordError(true)
+        }else{
+            setPasswordError(false)
+        }
+
+
+
+
+        // if((email === "") && (password === "")){
+        //     setEmailError(true)
+        //     setPasswordError(true)
+        // }else{
+        //     setEmailError(false)
+        //     setPasswordError(false)
+        // }
+        
+    }
+
+
     return (
         <div className={style.login_page}>
             <div className={style.container}>
@@ -30,28 +78,33 @@ export default function LoginForm() {
                 </div>
 
                 <div>
-                    <small>or use your own email</small>
+                    <small style={{color:"#9C9C9C"}}>or use your own email</small>
                 </div>
 
                 {/* form */}
-                <form>
+                <form onSubmit = {(e) => submitHandler(e)}>
                     <div className={style.textField}>
                         <TextField
                         className={style.input_field}
+                        value={email}
                         label="Email"
                         variant="outlined"
-                        helperText="Please enter the valid Email"
-                        // error = {true}
+                        type="text"
+                        helperText={emailError ? "Please enter the valid Email" : ""}
+                        error = {emailError}
+                        onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className={style.textField}>
                         <TextField
                         className={style.input_field}
+                        value={password}
                         label="Password"
                         variant="outlined"
                         type="password"
-                        helperText="Password should at least 8 character and containing alphabet !"
-                        // error = {true}
+                        onChange={(e) => setPassword(e.target.value)}
+                        helperText={passwordError ? "Password should at least 8 character and containing alphabet !" : " "}
+                        error = {passwordError}
                         />
                     </div>
                     
@@ -59,11 +112,11 @@ export default function LoginForm() {
                     <div className={style.forgetMsg}>
                         <p>Forget Password ?</p>     
                     </div>   
-                    <Button variant="contained" color="primary">Sign In</Button>
+                    <Button type="submit" size="medium" variant="contained" color="primary">Sign In</Button>
                 </form>
 
                  <div className={style.terms}>
-                    <small>Privacy Policy  Terms & Condition</small>
+                    <small style={{color:"#9C9C9C"}}>Privacy Policy  &middot; Terms & Condition</small>
                  </div>
             </div>  
         </div>

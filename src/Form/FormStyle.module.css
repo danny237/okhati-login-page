@@ -18,7 +18,7 @@
     height: 600px;
     width: 1050px;
     background: #FFFFFF;
-    box-shadow: 0px 20px 74px -40px #002e19;
+    box-shadow: 0px 20px 74px -40px #444444;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
@@ -48,8 +48,8 @@
 }
 
 .social_media > div{
-    margin: 20px 15px;
-    font-size: 25px;
+    margin: 20px 10px;
+    font-size: 20px;
 }
 
 .social_media > div:hover{
