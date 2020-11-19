@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./FormStyle.module.css";
+import style from "../Theme/LoginStyle.module.css";
 import logo from "../image/logo.png";
 import { FaFacebook, FaLinkedin, FaGoogle } from "react-icons/fa";
 import TextField from "@material-ui/core/TextField";
@@ -39,13 +39,6 @@ export default function LoginForm() {
             setPasswordError(false);
         }
 
-        // if((email === "") && (password === "")){
-        //     setEmailError(true)
-        //     setPasswordError(true)
-        // }else{
-        //     setEmailError(false)
-        //     setPasswordError(false)
-        // }
     };
 
     return (
@@ -78,7 +71,10 @@ export default function LoginForm() {
                     </div>
 
                     {/* form */}
-                    <form onSubmit={(e) => submitHandler(e)}>
+                    <form 
+                    onSubmit={(e) => submitHandler(e)}
+                    className={style.form}
+                    >
                         <div className={style.textField}>
                             <TextField
                                 className={style.input_field}
@@ -102,7 +98,7 @@ export default function LoginForm() {
                                 helperText={
                                     passwordError
                                         ? "Password should at least 8 character and containing alphabet !"
-                                        : " "
+                                        : ""
                                 }
                                 error={passwordError}
                             />
@@ -113,6 +109,7 @@ export default function LoginForm() {
                             <p>Forget Password ?</p>
                         </div>
                         <Button
+                            className={style.signinBtn}
                             type="submit"
                             size="medium"
                             variant="contained"
