@@ -5,7 +5,7 @@ import { FaFacebook, FaLinkedin, FaGoogle } from "react-icons/fa";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 
-import { EMAIL_FORMAT } from "../constants/EmailFormat";
+import { EMAIL_FORMAT } from "../Constants/Formats";
 
 export default function LoginForm() {
     const [email, setEmail] = useState("");
@@ -82,7 +82,7 @@ export default function LoginForm() {
                                 label="Email"
                                 variant="outlined"
                                 type="text"
-                                helperText={emailError ? "Please enter the valid Email" : ""}
+                                helperText={ emailError ? "Please enter the valid Email" : ""}
                                 error={emailError}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -95,8 +95,7 @@ export default function LoginForm() {
                                 variant="outlined"
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
-                                helperText={
-                                    passwordError
+                                helperText={ passwordError
                                         ? "Password should at least 8 character and containing alphabet !"
                                         : ""
                                 }
