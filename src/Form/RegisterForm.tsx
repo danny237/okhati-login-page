@@ -6,7 +6,9 @@ import { Button } from "@material-ui/core";
 import { FaFacebook, FaLinkedin, FaGoogle } from 'react-icons/fa';
 import logo from "../image/logo.png";
 import { EMAIL_FORMAT, PASSWORD_FORMAT } from "../Constants/Formats";
-
+import { PASSWORD_ERROR, EMAIL_ERROR } from '../Constants/ErrorMsg';
+import { REGISTER_IMAGE_URL } from '../Constants/ImageUrl';
+ 
 export default function RegisterForm() {
 
     const [email, setEmail] = useState('')
@@ -15,7 +17,6 @@ export default function RegisterForm() {
 
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
-    const [confirmPasswordError, setConfirmPasswordError] = useState(false)
 
     const submitHandler = (e: any) => {
         e.preventDefault()
@@ -33,18 +34,22 @@ export default function RegisterForm() {
             setEmailError(false);
         } else {
             setEmailError(true);
+            return;
         }
 
 
         // password validation
         if (((password !== "") && (confirmPassword !== "")) && 
-            password.match(PASSWORD_FORMAT)) {
-                console.log("success")
+        ((password.match(PASSWORD_FORMAT))) &&
+        (password === confirmPassword)){
+            setPasswordError(false)
+            console.log("sucess")
         }else{
-            console.log("error")
+            setPasswordError(true)
+            console.log("fail")
+            return
         }
-
-
+                
     }
 
 
@@ -56,8 +61,7 @@ export default function RegisterForm() {
                 <div className={classes.leftSection}>
                     <img
                         width="400px"
-                        src="http://strapi.sumna.life/uploads/1_receptionist_1b80ff4e2b.png" alt="report image" />
-                    <h3>Modernize your appointment system</h3>
+                        src={REGISTER_IMAGE_URL} alt="report" />
                 </div>
 
                 {/* right section */}
@@ -99,8 +103,8 @@ export default function RegisterForm() {
                                 label="Email"
                                 variant="outlined"
                                 type="text"
-                                helperText={emailError ? "Please enter the valid Email" : ""}
-                                // error={emailError}
+                                helperText={emailError ? EMAIL_ERROR : ""}
+                                error={emailError}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
@@ -112,11 +116,7 @@ export default function RegisterForm() {
                                 variant="outlined"
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
-                                helperText={true
-                                    ? "Password should contain at least 8 characters including number, alphabet uppercase and lower case !"
-                                    : ""
-                                }
-                            // error={passwordError}
+                                error = {passwordError}
                             />
                         </div>
                         <div className={style.textField}>
@@ -127,11 +127,11 @@ export default function RegisterForm() {
                                 variant="outlined"
                                 type="password"
                                 onChange={(e) => setConfirmPassword(e.target.value)}
-                                helperText={confirmPasswordError
-                                    ? "Password should at least 8 character and containing alphabet !"
+                                helperText={passwordError
+                                    ? PASSWORD_ERROR
                                     : ""
                                 }
-                                error={confirmPasswordError}
+                                error={passwordError}
                             />
                         </div>
 

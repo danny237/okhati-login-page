@@ -6,6 +6,9 @@ import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 
 import { EMAIL_FORMAT } from "../Constants/Formats";
+import { LOGIN_IMAGE_URL } from '../Constants/ImageUrl';
+import { EMAIL_ERROR, PASSWORD_ERROR_LOGIN_PAGE } from '../Constants/ErrorMsg';
+
 
 export default function LoginForm() {
     const [email, setEmail] = useState("");
@@ -82,7 +85,7 @@ export default function LoginForm() {
                                 label="Email"
                                 variant="outlined"
                                 type="text"
-                                helperText={ emailError ? "Please enter the valid Email" : ""}
+                                helperText={ emailError ? EMAIL_ERROR : ""}
                                 error={emailError}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -96,7 +99,7 @@ export default function LoginForm() {
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 helperText={ passwordError
-                                        ? "Password should at least 8 character and containing alphabet !"
+                                        ? PASSWORD_ERROR_LOGIN_PAGE
                                         : ""
                                 }
                                 error={passwordError}
@@ -128,7 +131,7 @@ export default function LoginForm() {
                 <div className={style.rightSection}>
                     <img
                     width="400px"
-                    src="http://strapi.sumna.life/uploads/3_doctor_b0a8f49f85.png"
+                    src={LOGIN_IMAGE_URL}
                     alt="heroImage" />
                 </div>
             </div>
