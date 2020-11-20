@@ -18,7 +18,7 @@ export default function Navbar() {
             Okhati
           </Typography>
             {
-                loginStatus && <Button onClick={() => setLoginStatus(false)} color="inherit">Log Out</Button>
+                loginStatus && <Button onClick={() => setLoginStatus(false)} color="inherit">LogOut</Button>
             }
         </Toolbar>
       </AppBar>

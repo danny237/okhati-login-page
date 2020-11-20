@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import style from "../Theme/LoginStyle.module.css";
-import logo from "../image/logo.png";
-import { FaFacebook, FaLinkedin, FaGoogle } from "react-icons/fa";
+
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { Link } from 'react-router-dom';
@@ -10,6 +9,7 @@ import { LOGIN_IMAGE_URL } from '../Constants/ImageUrl';
 import { LOGIN_ERROR_MSG } from '../Constants/ErrorMsg';
 
 import { LoginContext } from '../App';
+import Title from "../Components/Title";
 
 
 export default function LoginForm() {
@@ -54,28 +54,9 @@ export default function LoginForm() {
             <div className={style.container}>
 
                 <div className={style.leftSection}>
-                    {/* title */}
-                    <div className={style.title}>
-                        <img className={style.logo} src={logo} alt="logo" />
-                        <h1>Okhati</h1>
-                    </div>
-
-                    {/* social auth */}
-                    <div className={style.social_media}>
-                        <div>
-                            <FaFacebook />
-                        </div>
-                        <div>
-                            <FaLinkedin />
-                        </div>
-                        <div>
-                            <FaGoogle />
-                        </div>
-                    </div>
-
-                    <div>
-                        <small style={{ color: "#9C9C9C" }}>or use your own email</small>
-                    </div>
+                    
+                    {/* title component*/}
+                    <Title />
 
                     {/* form */}
                     <form 

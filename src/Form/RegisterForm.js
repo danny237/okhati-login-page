@@ -3,13 +3,12 @@ import style from '../Theme/LoginStyle.module.css';
 import classes from '../Theme/RegisterStyle.module.css';
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-import { FaFacebook, FaLinkedin, FaGoogle } from 'react-icons/fa';
-import logo from "../image/logo.png";
 import { EMAIL_FORMAT, PASSWORD_FORMAT } from "../Constants/Formats";
 import { PASSWORD_ERROR, EMAIL_ERROR } from '../Constants/ErrorMsg';
 import { REGISTER_IMAGE_URL } from '../Constants/ImageUrl';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import Title from '../Components/Title';
  
 export default function RegisterForm() {
     let history = useHistory()
@@ -86,29 +85,8 @@ export default function RegisterForm() {
                 {/* right section */}
                 <div className={classes.rightSection}>
 
-                    <div className={style.title}>
-                        <img className={style.logo} src={logo} alt="logo" />
-                        <h1>Okhati</h1>
-                    </div>
-
-                    {/* social auth */}
-                    <div className={style.social_media}>
-                        <div>
-                            <FaFacebook />
-                        </div>
-                        <div>
-                            <FaLinkedin />
-                        </div>
-                        <div>
-                            <FaGoogle />
-                        </div>
-                    </div>
-
-                    <div>
-                        <small style={{ color: "#9C9C9C" }}>or use your own email</small>
-                    </div>
-
-
+                    {/* title component*/}
+                    <Title />
 
                     {/* form */}
                     <form
