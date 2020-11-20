@@ -34,7 +34,6 @@ export default function RegisterForm() {
             setEmailError(false);
         } else {
             setEmailError(true);
-            return;
         }
 
 
