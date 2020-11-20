@@ -38,6 +38,7 @@ export default function RegisterForm() {
             setEmailError(false);
         } else {
             setEmailError(true);
+            return;
         }
 
 
@@ -63,10 +64,6 @@ export default function RegisterForm() {
             return;
         }        
     }
-
-    useEffect(() => {
-        localStorage.setItem("users", JSON.stringify(users))
-    }, [])
 
 
     return (

@@ -3,14 +3,14 @@ import LoginForm from "./Form/LoginForm";
 import RegisterForm from "./Form/RegisterForm";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import { ADMIN_EMAIL, ADMIN_PASSWORD } from './Constants/Admin';
+import Navbar from "./Components/Navbar";
 
 export const LoginContext = createContext();
 export const UsersContext = createContext();
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(getInitialLoginStatus());
-  const [users, setUsers] = useState([{email: ADMIN_EMAIL, password: ADMIN_PASSWORD}]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("userDesc", JSON.stringify(loginStatus));
@@ -28,17 +28,16 @@ function App() {
     <div>
       <UsersContext.Provider value={[users, setUsers]}>
         <LoginContext.Provider value={[loginStatus, setLoginStatus]}>
+        <Navbar />
           <Router>
             <Switch>
-              <Route exact path="/" component={LoginForm} />
-
-              <Route
-                exact
-                path="/home"
-                render={() => (loginStatus ? <Home /> : <LoginForm />)}
+             
+              <Route exact path="/"
+                render = {() => (loginStatus ? <Home /> : <LoginForm />)}
               />
 
               <Route exact path="/register" component={RegisterForm} />
+              
             </Switch>
           </Router>
         </LoginContext.Provider>

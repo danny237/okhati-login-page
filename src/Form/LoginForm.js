@@ -6,9 +6,8 @@ import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 
-import { EMAIL_FORMAT } from "../Constants/Formats";
 import { LOGIN_IMAGE_URL } from '../Constants/ImageUrl';
-import { EMAIL_ERROR, PASSWORD_ERROR_LOGIN_PAGE } from '../Constants/ErrorMsg';
+import { LOGIN_ERROR_MSG } from '../Constants/ErrorMsg';
 
 import { LoginContext } from '../App';
 
@@ -20,41 +19,34 @@ export default function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const [emailError, setEmailError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
+    const [loginError, setLoginError] = useState(false)
 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        // email validation
-        function isValidEmail() {
-            if (email.match(EMAIL_FORMAT)) {
-                return true;
-            } else {
-                return false;
+        let users = JSON.parse(localStorage.getItem("users"))
+        for (let user of users){
+            if (isValidUser(user)){
+                setLoginStatus(true)
+            }else{
+                setLoginError(true)
+            }
+        }
+        
+        function isValidUser(user){
+            if((email === user.email) && password === user.password){
+               return true
+            }else{
+                return false
             }
         }
 
-        if (isValidEmail() && email !== "") {
-            setEmailError(false);
-        } else {
-            setEmailError(true);
-        }
-
-        // password validation
-        if (password === "" || password.length < 8) {
-            setPasswordError(true);
-        } else {
-            setPasswordError(false);
-            setLoginStatus(true);
-        }
-
+        
     };
 
     return (
         <div className={style.login_page}>
             <div className={style.container}>
-                
 
                 <div className={style.leftSection}>
                     {/* title */}
@@ -92,8 +84,7 @@ export default function LoginForm() {
                                 label="Email"
                                 variant="outlined"
                                 type="text"
-                                helperText={ emailError ? EMAIL_ERROR : ""}
-                                error={emailError}
+                                error={loginError}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
@@ -105,11 +96,11 @@ export default function LoginForm() {
                                 variant="outlined"
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
-                                helperText={ passwordError
-                                        ? PASSWORD_ERROR_LOGIN_PAGE
+                                helperText={ loginError
+                                        ? LOGIN_ERROR_MSG
                                         : ""
                                 }
-                                error={passwordError}
+                                error={loginError}
                             />
                         </div>
 
