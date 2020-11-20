@@ -113,7 +113,7 @@ export default function LoginForm() {
                         <div className={style.extraMsg}>
                             <p>Forgot Password ?</p>
                             <Link to="/register">
-                                <p style={{color: "#009653"}}>Sign Up</p>
+                                <p style={{color: "#009653", marginLeft: "2px"}}>Sign Up</p>
                             </Link>
                         </div>
                         <div className={style.signinBtn}>

@@ -20,8 +20,6 @@ function App() {
     return userInfo || false;
   }
 
-  console.log(loginStatus);
-
   return (
     <div>
       <LoginContext.Provider value={[loginStatus, setLoginStatus]}>

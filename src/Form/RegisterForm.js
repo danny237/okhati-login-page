@@ -54,20 +54,16 @@ export default function RegisterForm() {
             let localUsers = JSON.parse(localStorage.getItem("users"))
             if(localUsers){
                 let newUserList = Array.from(localUsers)
-                console.log("list", newUserList)
                 newUserList.push(newUser)
                 localStorage.setItem("users", JSON.stringify(newUserList))
-                console.log("I am pushing", newUser)
             }else{
                 let newList = []
                 newList.push(newUser)
                 localStorage.setItem("users", JSON.stringify(newList))
-                console.log("I am new", newUser)
             }
 
         }else{
             setPasswordError(true)
-            console.log("fail")
             return;
         }        
     }
