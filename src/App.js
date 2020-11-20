@@ -4,6 +4,7 @@ import RegisterForm from "./Form/RegisterForm";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
+import SuccessMsg from "./Pages/SuccessMsg";
 
 export const LoginContext = createContext();
 
@@ -33,6 +34,9 @@ function App() {
             />
 
             <Route exact path="/register" component={RegisterForm} />
+
+            <Route exact path="/success" component={SuccessMsg} />
+
           </Switch>
         </Router>
       </LoginContext.Provider>

@@ -9,8 +9,10 @@ import { EMAIL_FORMAT, PASSWORD_FORMAT } from "../Constants/Formats";
 import { PASSWORD_ERROR, EMAIL_ERROR } from '../Constants/ErrorMsg';
 import { REGISTER_IMAGE_URL } from '../Constants/ImageUrl';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
  
 export default function RegisterForm() {
+    let history = useHistory()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -61,6 +63,7 @@ export default function RegisterForm() {
                 newList.push(newUser)
                 localStorage.setItem("users", JSON.stringify(newList))
             }
+            history.push('/success');
 
         }else{
             setPasswordError(true)
