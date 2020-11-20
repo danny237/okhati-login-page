@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
 import style from "../Theme/LoginStyle.module.css";
-
-import TextField from "@material-ui/core/TextField";
 import ButtonComp from "../Components/Button";
 import { Link } from 'react-router-dom';
 
@@ -10,6 +8,7 @@ import { LOGIN_ERROR_MSG } from '../Constants/ErrorMsg';
 
 import { LoginContext } from '../App';
 import Title from "../Components/Title";
+import TextFieldComp from "../Components/TextField";
 
 
 export default function LoginForm() {
@@ -45,7 +44,6 @@ export default function LoginForm() {
                 return false
             }
         }
-
     };
 
     return (
@@ -62,32 +60,24 @@ export default function LoginForm() {
                         onSubmit={(e) => submitHandler(e)}
                         className={style.form}
                     >
-                        <div className={style.textField}>
-                            <TextField
-                                className={style.input_field}
-                                value={email}
-                                label="Email"
-                                variant="outlined"
-                                type="text"
-                                error={loginError}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div>
-                        <div className={style.textField}>
-                            <TextField
-                                className={style.input_field}
-                                value={password}
-                                label="Password"
-                                variant="outlined"
-                                type="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                                helperText={loginError
-                                    ? LOGIN_ERROR_MSG
-                                    : ""
-                                }
-                                error={loginError}
-                            />
-                        </div>
+                        <TextFieldComp
+                            value={email}
+                            label="Email"
+                            variant="outlined"
+                            type="text"
+                            error={loginError}
+                            onChange={setEmail}
+                        />
+
+                        <TextFieldComp
+                            value={password}
+                            label="Password"
+                            variant="outlined"
+                            type="password"
+                            onChange={setPassword}
+                            msg={LOGIN_ERROR_MSG}
+                            error={loginError}
+                        />
 
                         {/* extra msg */}
                         <div className={style.extraMsg}>

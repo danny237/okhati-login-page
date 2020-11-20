@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import style from '../Theme/LoginStyle.module.css';
 import classes from '../Theme/RegisterStyle.module.css';
-import TextField from "@material-ui/core/TextField";
 import { EMAIL_FORMAT, PASSWORD_FORMAT } from "../Constants/Formats";
 import { PASSWORD_ERROR, EMAIL_ERROR } from '../Constants/ErrorMsg';
 import { REGISTER_IMAGE_URL } from '../Constants/ImageUrl';
@@ -9,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Title from '../Components/Title';
 import ButtonComp from '../Components/Button';
+import TextFieldComp from '../Components/TextField';
  
 export default function RegisterForm() {
     let history = useHistory()
@@ -93,44 +93,35 @@ export default function RegisterForm() {
                         onSubmit={(e) => submitHandler(e)}
                         className={style.form}
                     >
-                        <div className={style.textField}>
-                            <TextField
-                                className={style.input_field}
+                            <TextFieldComp
                                 value={email}
                                 label="Email"
                                 variant="outlined"
                                 type="text"
-                                helperText={emailError ? EMAIL_ERROR : ""}
-                                error={emailError}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={setEmail}
+                                msg = {EMAIL_ERROR}
+                                error={emailError}   
                             />
-                        </div>
-                        <div className={style.textField}>
-                            <TextField
-                                className={style.input_field}
+
+                            <TextFieldComp
                                 value={password}
                                 label="Password"
                                 variant="outlined"
                                 type="password"
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={setPassword}
                                 error = {passwordError}
                             />
-                        </div>
-                        <div className={style.textField}>
-                            <TextField
-                                className={style.input_field}
+                        
+                            <TextFieldComp
                                 value={confirmPassword}
                                 label="Confirm Password"
                                 variant="outlined"
                                 type="password"
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                                helperText={passwordError
-                                    ? PASSWORD_ERROR
-                                    : ""
-                                }
+                                onChange={setConfirmPassword}
+                                msg={PASSWORD_ERROR}
                                 error={passwordError}
                             />
-                        </div>
+                       
 
                         {/* forget msg */}
                         <div className={style.extraMsg}>
