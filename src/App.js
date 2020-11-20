@@ -6,11 +6,9 @@ import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 
 export const LoginContext = createContext();
-export const UsersContext = createContext();
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(getInitialLoginStatus());
-  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("userDesc", JSON.stringify(loginStatus));
@@ -26,22 +24,20 @@ function App() {
 
   return (
     <div>
-      <UsersContext.Provider value={[users, setUsers]}>
-        <LoginContext.Provider value={[loginStatus, setLoginStatus]}>
+      <LoginContext.Provider value={[loginStatus, setLoginStatus]}>
         <Navbar />
-          <Router>
-            <Switch>
-             
-              <Route exact path="/"
-                render = {() => (loginStatus ? <Home /> : <LoginForm />)}
-              />
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (loginStatus ? <Home /> : <LoginForm />)}
+            />
 
-              <Route exact path="/register" component={RegisterForm} />
-              
-            </Switch>
-          </Router>
-        </LoginContext.Provider>
-      </UsersContext.Provider>
+            <Route exact path="/register" component={RegisterForm} />
+          </Switch>
+        </Router>
+      </LoginContext.Provider>
     </div>
   );
 }

@@ -16,7 +16,7 @@
     height: 600px;
     width: 1050px;
     background: #FFFFFF;
-    box-shadow: 0px 10px 74px -40px rgba(14, 14, 14, 1);
+    box-shadow: 0px 10px 74px -40px rgba(0, 150, 83, 0.5);
     border-radius: 10px;
     text-align: center;
     display: flex;
@@ -48,12 +48,12 @@
 
 @media only screen and (max-width: 768px){
     .container{
-        width: 400px;
+        width: 350px;
     }
     .form{
         width: 370px;
     }
     .input_field{
-        width: 320px;
+        width: 300px;
     }
 }

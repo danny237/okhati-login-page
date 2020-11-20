@@ -85,7 +85,10 @@
     width: 500px;
     display: flex;
     margin: 0 auto;
-    justify-content: space-between;
+}
+
+.extraMsg > p {
+    color: #2a2a2a;
 }
 
 .signinBtn{
