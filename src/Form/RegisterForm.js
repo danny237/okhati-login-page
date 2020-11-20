@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import style from '../Theme/LoginStyle.module.css';
 import classes from '../Theme/RegisterStyle.module.css';
 import TextField from "@material-ui/core/TextField";
@@ -8,8 +8,12 @@ import logo from "../image/logo.png";
 import { EMAIL_FORMAT, PASSWORD_FORMAT } from "../Constants/Formats";
 import { PASSWORD_ERROR, EMAIL_ERROR } from '../Constants/ErrorMsg';
 import { REGISTER_IMAGE_URL } from '../Constants/ImageUrl';
+import { Link } from 'react-router-dom';
+import { UsersContext } from '../App';
  
 export default function RegisterForm() {
+
+    const [users, setUsers] = useContext(UsersContext)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -42,14 +46,27 @@ export default function RegisterForm() {
         ((password.match(PASSWORD_FORMAT))) &&
         (password === confirmPassword)){
             setPasswordError(false)
-            console.log("sucess")
+            
+            // register new user
+            let newUser = {
+                email,
+                password
+            }
+            let newList = users
+            newList.push(newUser)
+            setUsers(newList)
+            localStorage.setItem("users", JSON.stringify(newList))
+
         }else{
             setPasswordError(true)
             console.log("fail")
-            return
-        }
-                
+            return;
+        }        
     }
+
+    useEffect(() => {
+        localStorage.setItem("users", JSON.stringify(users))
+    }, [])
 
 
     return (
@@ -135,8 +152,11 @@ export default function RegisterForm() {
                         </div>
 
                         {/* forget msg */}
-                        <div className={style.forgetMsg}>
-                                <p>I am already member.</p>
+                        <div className={style.extraMsg}>
+                            <p>I am already member.</p>
+                            <Link to="/">
+                                <p style={{color: "#009653"}}>Sign In</p>
+                            </Link>
                         </div>
                         <div className={style.signinBtn}>
                         <Button
