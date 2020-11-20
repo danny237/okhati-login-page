@@ -27,7 +27,6 @@ export default function LoginForm() {
         let users = JSON.parse(localStorage.getItem("users"))
         if (users){
             for (let user of users){
-                console.log(user)
                 if (isValidUser(user)){
                     setLoginStatus(true)
                     return;
@@ -94,7 +93,7 @@ export default function LoginForm() {
                         <div className={style.extraMsg}>
                             <p>Forgot Password ?</p>
                             <Link to="/register">
-                                <p style={{color: "#009653", marginLeft: "2px"}}>Sign Up</p>
+                                <p style={{color: "#009653", marginLeft: "4px"}}>Sign Up</p>
                             </Link>
                         </div>
                         <div className={style.signinBtn}>

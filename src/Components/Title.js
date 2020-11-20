@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../image/logo.png";
+import logo from "../image/okhati.png";
 import style from '../Theme/LoginStyle.module.css';
 import { FaFacebook, FaLinkedin, FaGoogle } from "react-icons/fa";
 
@@ -9,7 +9,6 @@ export default function Title() {
             {/* title */}
             <div className={style.title}>
                 <img className={style.logo} src={logo} alt="logo" />
-                <h1>Okhati</h1>
             </div>
 
             {/* social auth */}
