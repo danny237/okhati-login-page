@@ -1,23 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import style from "../Theme/LoginStyle.module.css";
 import logo from "../image/logo.png";
 import { FaFacebook, FaLinkedin, FaGoogle } from "react-icons/fa";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 import { EMAIL_FORMAT } from "../Constants/Formats";
 import { LOGIN_IMAGE_URL } from '../Constants/ImageUrl';
 import { EMAIL_ERROR, PASSWORD_ERROR_LOGIN_PAGE } from '../Constants/ErrorMsg';
 
+import { LoginContext } from '../App';
+
 
 export default function LoginForm() {
+
+    const [loginStatus, setLoginStatus] = useContext(LoginContext);
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
-    const submitHandler = (e: any) => {
+    const submitHandler = (e) => {
         e.preventDefault();
 
         // email validation
@@ -40,6 +46,7 @@ export default function LoginForm() {
             setPasswordError(true);
         } else {
             setPasswordError(false);
+            setLoginStatus(true);
         }
 
     };
@@ -106,12 +113,15 @@ export default function LoginForm() {
                             />
                         </div>
 
-                        {/* forget msg */}
-                        <div className={style.forgetMsg}>
+                        {/* extra msg */}
+                        <div className={style.extraMsg}>
                             <p>Forget Password ?</p>
+                            <Link to="/register">
+                                <p style={{color: "#009653"}}>Sign Up</p>
+                            </Link>
                         </div>
+                        <div className={style.signinBtn}>
                         <Button
-                            className={style.signinBtn}
                             type="submit"
                             size="medium"
                             variant="contained"
@@ -119,6 +129,7 @@ export default function LoginForm() {
                         >
                             Sign In
                     </Button>
+                        </div>
                     </form>
 
                     <div className={style.terms}>

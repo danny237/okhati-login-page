@@ -80,11 +80,12 @@
     margin: 20px;
 }
 
-.forgetMsg{
+.extraMsg{
     text-align: start;
     width: 500px;
     display: flex;
     margin: 0 auto;
+    justify-content: space-between;
 }
 
 .signinBtn{
@@ -111,7 +112,8 @@
     .input_field{
         width: 320px;
     }
-    .forgetMsg{
+    .extraMsg{
+        width: 320px;
         margin-left: 20px;
     }
 }
