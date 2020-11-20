@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import style from '../Theme/LoginStyle.module.css';
 import classes from '../Theme/RegisterStyle.module.css';
 import TextField from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
 import { EMAIL_FORMAT, PASSWORD_FORMAT } from "../Constants/Formats";
 import { PASSWORD_ERROR, EMAIL_ERROR } from '../Constants/ErrorMsg';
 import { REGISTER_IMAGE_URL } from '../Constants/ImageUrl';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Title from '../Components/Title';
+import ButtonComp from '../Components/Button';
  
 export default function RegisterForm() {
     let history = useHistory()
@@ -140,15 +140,7 @@ export default function RegisterForm() {
                             </Link>
                         </div>
                         <div className={style.signinBtn}>
-                        <Button
-                            
-                            type="submit"
-                            size="medium"
-                            variant="contained"
-                            color="primary"
-                        >
-                            Sign Up
-                    </Button>
+                        <ButtonComp>Sign Up</ButtonComp>
                         </div>
                     </form>
                 </div>

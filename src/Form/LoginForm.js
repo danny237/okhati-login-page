@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import style from "../Theme/LoginStyle.module.css";
 
 import TextField from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
+import ButtonComp from "../Components/Button";
 import { Link } from 'react-router-dom';
 
 import { LOGIN_IMAGE_URL } from '../Constants/ImageUrl';
@@ -25,27 +25,27 @@ export default function LoginForm() {
         e.preventDefault();
 
         let users = JSON.parse(localStorage.getItem("users"))
-        if (users){
-            for (let user of users){
-                if (isValidUser(user)){
+        if (users) {
+            for (let user of users) {
+                if (isValidUser(user)) {
                     setLoginStatus(true)
                     return;
-                }else{
+                } else {
                     setLoginError(true)
                 }
             }
-        }else{
+        } else {
             setLoginError(true)
         }
-        
-        function isValidUser(user){
-            if((email === user.email) && password === user.password){
-               return true
-            }else{
+
+        function isValidUser(user) {
+            if ((email === user.email) && password === user.password) {
+                return true
+            } else {
                 return false
             }
         }
-   
+
     };
 
     return (
@@ -53,14 +53,14 @@ export default function LoginForm() {
             <div className={style.container}>
 
                 <div className={style.leftSection}>
-                    
+
                     {/* title component*/}
                     <Title />
 
                     {/* form */}
-                    <form 
-                    onSubmit={(e) => submitHandler(e)}
-                    className={style.form}
+                    <form
+                        onSubmit={(e) => submitHandler(e)}
+                        className={style.form}
                     >
                         <div className={style.textField}>
                             <TextField
@@ -81,9 +81,9 @@ export default function LoginForm() {
                                 variant="outlined"
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
-                                helperText={ loginError
-                                        ? LOGIN_ERROR_MSG
-                                        : ""
+                                helperText={loginError
+                                    ? LOGIN_ERROR_MSG
+                                    : ""
                                 }
                                 error={loginError}
                             />
@@ -93,18 +93,11 @@ export default function LoginForm() {
                         <div className={style.extraMsg}>
                             <p>Forgot Password ?</p>
                             <Link to="/register">
-                                <p style={{color: "#009653", marginLeft: "4px"}}>Sign Up</p>
+                                <p style={{ color: "#009653", marginLeft: "4px" }}>Sign Up</p>
                             </Link>
                         </div>
                         <div className={style.signinBtn}>
-                        <Button
-                            type="submit"
-                            size="medium"
-                            variant="contained"
-                            color="primary"
-                        >
-                            Sign In
-                    </Button>
+                            <ButtonComp>Sign In</ButtonComp>
                         </div>
                     </form>
 
@@ -117,9 +110,9 @@ export default function LoginForm() {
 
                 <div className={style.rightSection}>
                     <img
-                    width="400px"
-                    src={LOGIN_IMAGE_URL}
-                    alt="heroImage" />
+                        width="400px"
+                        src={LOGIN_IMAGE_URL}
+                        alt="heroImage" />
                 </div>
             </div>
         </div>
