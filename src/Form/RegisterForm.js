@@ -18,7 +18,7 @@ export default function RegisterForm() {
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
 
-    const submitHandler = (e: any) => {
+    const submitHandler = (e) => {
         e.preventDefault()
 
         // email validation
