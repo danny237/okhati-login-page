@@ -8,7 +8,7 @@ export default function SuccessMsg() {
     return (
         <div className={style.successPage}>
             <h3>Congratulations, your account has been successfully created.</h3>
-            <Link to="/">
+            <Link to="/" className={style.link}>
                 <Button>Sign In</Button>
             </Link>
         </div>

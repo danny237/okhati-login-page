@@ -12,12 +12,12 @@ function App() {
   const [loginStatus, setLoginStatus] = useState(getInitialLoginStatus());
 
   useEffect(() => {
-    localStorage.setItem("userDesc", JSON.stringify(loginStatus));
+    localStorage.setItem("loginStatus", JSON.stringify(loginStatus));
   }, [loginStatus]);
 
   // get the initial login status from localstorage
   function getInitialLoginStatus() {
-    const userInfo = JSON.parse(localStorage.getItem("userDesc"));
+    const userInfo = JSON.parse(localStorage.getItem("loginStatus"));
     return userInfo || false;
   }
 
