@@ -88,6 +88,10 @@
     margin-top: 20px;
 }
 
+.link{
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 1200px){
     .rightSection{
         display: none;

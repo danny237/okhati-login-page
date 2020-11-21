@@ -82,7 +82,7 @@ export default function LoginForm() {
                         {/* extra msg */}
                         <div className={style.extraMsg}>
                             <p>Forgot Password ?</p>
-                            <Link to="/register">
+                            <Link to="/register" className={style.link}>
                                 <p style={{ color: "#009653", marginLeft: "4px" }}>Sign Up</p>
                             </Link>
                         </div>

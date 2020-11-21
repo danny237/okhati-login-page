@@ -126,7 +126,7 @@ export default function RegisterForm() {
                         {/* forget msg */}
                         <div className={style.extraMsg}>
                             <p>Already a member ? </p>
-                            <Link to="/">
+                            <Link to="/" className={style.link}>
                                 <p style={{color: "#009653", marginLeft: "4px"}}>Sign In</p>
                             </Link>
                         </div>
