@@ -18,3 +18,4 @@ $ yarn
 ```
 $ yarn start
 ```
+## Deploye on heroku: [here](https://okhati77.herokuapp.com/)
