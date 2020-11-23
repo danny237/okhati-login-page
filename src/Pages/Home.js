@@ -11,7 +11,7 @@ export default function Home() {
         }else if(currentHour < 17){
           return "Good Afternoon !";
         }else{
-          return "Good Evining !"
+          return "Good Evening !"
         }
       }
 
