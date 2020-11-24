@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div>
-      <LoginContext.Provider value={[loginStatus, setLoginStatus]}>
+      <LoginContext.Provider value={{loginStatus, setLoginStatus}}>
         <Navbar />
         <Router>
           <Switch>

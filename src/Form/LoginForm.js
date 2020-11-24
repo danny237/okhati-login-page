@@ -13,7 +13,7 @@ import TextFieldComp from "../Components/TextField";
 
 export default function LoginForm() {
 
-    const [loginStatus, setLoginStatus] = useContext(LoginContext);
+    const { setLoginStatus } = useContext(LoginContext);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

@@ -8,7 +8,7 @@ import { LoginContext } from '../App';
 
 export default function Navbar() {
 
-    const [loginStatus, setLoginStatus] = useContext(LoginContext)
+    const { loginStatus, setLoginStatus } = useContext(LoginContext)
 
   return (
     <div>
